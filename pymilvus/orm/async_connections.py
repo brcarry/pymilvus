@@ -403,11 +403,6 @@ class Connections(metaclass=SingleInstanceMetaClass):
 
             # 11.28 EDITED 建立通道上同步的呀，为什么还需要wait ready
             # 11.28 EDITED 还是暂时保持住同步的写法
-            gh._wait_for_channel_ready(timeout=timeout)
-            if kwargs.get("keep_alive", False):
-                gh.register_state_change_callback(
-                    ReconnectHandler(self, alias, kwargs_copy).reconnect_on_idle
-                )
             kwargs.pop("password")
             kwargs.pop("token", None)
             kwargs.pop("db_name", "")
@@ -492,6 +487,9 @@ class Connections(metaclass=SingleInstanceMetaClass):
             >>> connections.list_connections()
         """
         return [(k, self._connected_alias.get(k, None)) for k in self._alias]
+
+    def get_server_type():
+        return "milvus"
 
     def get_connection_addr(self, alias: str):
         """

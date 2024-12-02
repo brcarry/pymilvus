@@ -23,6 +23,7 @@ from pymilvus.client.utils import mkts_from_hybridts as _mkts_from_hybridts
 from pymilvus.client.utils import mkts_from_unixtime as _mkts_from_unixtime
 from pymilvus.exceptions import MilvusException
 
+# EDITED
 # from .connections import connections
 from .async_connections import connections
 
